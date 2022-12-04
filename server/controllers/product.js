@@ -22,8 +22,7 @@ class ProductControllerClass {
   static fetchCategory = async (req, res) => {
     try {
       const category = req.params?.category;
-      const query = req.query;
-      console.log('brand : ',query);
+      const filt_query = req?.query;
       if (
         category === "smartphones" ||
         category === "laptops" ||
@@ -32,9 +31,8 @@ class ProductControllerClass {
         category === "groceries" ||
         category === "home-decoration"
       ) {
-        ProductServiceClass.fetchCategory(category)
+        ProductServiceClass.fetchCategory(category,filt_query)
           .then((respond) => {
-            // res.json({ category: respond });
             res.send(respond);
           })
           .catch((err) => {

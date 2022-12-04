@@ -7,8 +7,9 @@ class ProductServiceClass {
     return fetching_products;
   };
   //fetch All Route Categories
-  static fetchCategory = async(category) => {
-    const fetching_products = await Product.find({category:category})
+  static fetchCategory = async(category,filt_query) => {
+    filt_query['category'] = category;
+    const fetching_products = await Product.find(filt_query);
     return fetching_products;
   } 
   //Fetch One Product
