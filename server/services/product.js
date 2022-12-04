@@ -8,6 +8,7 @@ class ProductServiceClass {
   };
   //fetch All Route Categories
   static fetchCategory = async(category,filt_query) => {
+    console.log('getch category work');
     filt_query['category'] = category;
     const fetching_products = await Product.find(filt_query);
     return fetching_products;
