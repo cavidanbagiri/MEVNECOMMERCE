@@ -5,13 +5,14 @@
         <div class="col-3 bg-primary">
             <h1>Brands</h1>
             <div v-for="i in brands" :key="i">
-                <filter-section :brand="i" @filteredName="addFilter" @unFilteredName="removeFilteredName"></filter-section>
+                <filter-section :brand="i" @filteredName="addFilter" @unFilteredName="removeFilteredName">
+                </filter-section>
             </div>
         </div>
         <div class="col-9 bg-warning">
             <div class="row">
-                <div  class="col-3" v-for="i in products" :key=i>
-                    <card-item :product="i" ></card-item>
+                <div class="col-3" v-for="i in products" :key=i>
+                    <card-item :product="i"></card-item>
                 </div>
             </div>
         </div>
@@ -21,7 +22,7 @@
 
 <script setup>
 
-import { computed, nextTick, onMounted, ref } from 'vue';
+import { computed, onMounted, ref } from 'vue';
 import CardItem from '../components/CardItem.vue';
 import FilterSection from '../components/FilterSection.vue';
 
@@ -48,15 +49,14 @@ onMounted(() => {
 let filtered_items = ref([]);
 
 //Filter From Backend
-function addFilter(item){
+function addFilter(item) {
     filtered_items.value.push(item);
-    console.log('Filtered Arrays : ', filtered_items.value);
+    category_store.FETCHFILTEREDITEMS(route.params.category, filtered_items);
 }
 //Delete From Filter Backend
-function removeFilteredName(item){
-    filtered_items.value = filtered_items.value.filter((item)=>item!==item);
-    console.log('Filtered Arrays : ', filtered_items.value);
-
+function removeFilteredName(item) {
+    filtered_items.value = filtered_items.value.filter((items) => items !== item);
+    category_store.FETCHFILTEREDITEMS(route.params.category, filtered_items);
 }
 
 </script>

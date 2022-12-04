@@ -1,7 +1,6 @@
 import { defineStore } from "pinia";
 
 import axios from "axios";
-import { slotFlagsText } from "@vue/shared";
 
 const categoryStore = defineStore("categoryStore", {
   state: () => ({
@@ -29,7 +28,7 @@ const categoryStore = defineStore("categoryStore", {
             console.log("error catalog fetching is : ", err);
           });
       } catch (err) {
-        console.log("Fetch Catalog Error ",err);
+        console.log("Fetch Catalog Error ", err);
       }
     },
     //Fetch All Catalog For
@@ -45,7 +44,38 @@ const categoryStore = defineStore("categoryStore", {
             console.log("error category fetching is : ", err);
           });
       } catch (err) {
-        console.log("Fetch Category ",err);
+        console.log("Fetch Category ", err);
+      }
+    },
+    //fetch Filtered IProducts
+    async FETCHFILTEREDITEMS(category_name, filter) {
+      try {
+        if (filter.value.length >= 1) {
+          let __query = "";
+          for (let i in filter.value) {
+            if (__query === "") {
+              __query += "?";
+            }
+            if (i >= 1) {
+              __query += "&&";
+            }
+            __query += "brand=" + filter.value[i];
+            await axios
+              .get(`/api/catalog/${category_name}${__query}`)
+              .then((respond) => {
+                this.products = respond.data;
+                return this.products;
+              })
+              .catch((err) => {
+                console.log("From Query Err : ", err);
+              });
+          }
+        }
+        else{
+          return this.FETCHCATEGORY(category_name);
+        }
+      } catch (err) {
+        console.log("Fetch Category ", err);
       }
     },
     //Fetch Marks
@@ -62,9 +92,9 @@ const categoryStore = defineStore("categoryStore", {
             console.log("error category fetching is : ", err);
           });
       } catch (err) {
-        console.log("Fetch Category ",err);
+        console.log("Fetch Category ", err);
       }
-    }
+    },
   },
 });
 
