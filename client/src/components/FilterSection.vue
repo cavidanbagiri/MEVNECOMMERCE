@@ -1,10 +1,10 @@
 
 <template>
     <div>
-        <div class="form-check">
+        <div class="form-check flex items-center pl-8">
             <input class="form-check-input" type="checkbox" value="Hello world" :id="props.brand" v-model="checked" @change="checkedCondition">
-            <label class="form-check-label" for="flexCheckDefault">
-                {{props.brand}} {{checked}}
+            <label class="py-2 ml-2 w-full text-md font-medium text-gray-700 dark:text-black-300" for="flexCheckDefault">
+                {{props.brand}}
             </label>
         </div>
     </div>

@@ -1,11 +1,11 @@
 import { createApp } from 'vue'
-// import '../index.css'
 
 //Import Pinia
 import {createPinia} from 'pinia';
 //Import Pinia Persist State
 import piniaPluginPersistedstate from 'pinia-plugin-persistedstate';
-
+//Import Tailwind css
+import './index.css';
 //Import i18n Internalization
 import i18n from './includes/i18n'; 
 

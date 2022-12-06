@@ -1,17 +1,17 @@
 
 
 <template>
-    <div class="row">
-        <div class="col-3 bg-primary">
-            <h1>Brands</h1>
+    <div class="row mb-2">
+        <div class="col-3">
+            <span class="mb-2 mt-3  p-2 text-center flex text-3xl fw-bold font-semibold text-gray-900 dark:text-dark">Brands</span>
             <div v-for="i in brands" :key="i">
                 <filter-section :brand="i" @filteredName="addFilter" @unFilteredName="removeFilteredName">
                 </filter-section>
             </div>
         </div>
-        <div class="col-9 bg-warning">
-            <div class="row">
-                <div class="col-3" v-for="i in products" :key=i>
+        <div class="col-9">
+            <div class="row flex justify-content-between">
+                <div class="my-2 mx-1 p-0 border-none" v-for="i in products" :key=i style="width: 15rem;">
                     <card-item :product="i"></card-item>
                 </div>
             </div>

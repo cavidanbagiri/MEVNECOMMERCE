@@ -1,14 +1,14 @@
 
 <template>
 
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
     <div class="container-fluid">
-      <a class="navbar-brand fw-bold " v-font-size=30 href="#">Market</a>
+      <router-link :to="{name:'Home'}" class="navbar-brand fw-bold text-warning" v-font-size=30>Market</router-link>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <div class=" navbar-collapse" id="navbarSupportedContent">
 
         <ul class="navbar-nav me-auto  mb-2 mb-lg-0 ">
           <li>
@@ -19,7 +19,7 @@
           </li>
         </ul>
 
-        <div class="input-group mx-5  ">
+        <div class="input-group mx-5">
           <input type="text" class="form-control border border-warning rounded-lg" placeholder="Search ... "
             aria-label="Search" aria-describedby="basic-addon1">
         </div>
