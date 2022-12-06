@@ -1,5 +1,7 @@
 const queryString = require('query-string');
 
+const fs = require('fs');
+
 const ProductServiceClass = require("../services/product");
 
 class ProductControllerClass {
@@ -51,6 +53,24 @@ class ProductControllerClass {
       console.log("Fetcing Category Error : ", err);
     }
   };
+  //Insert Data
+  static insertData = async (req, res) => {
+    console.log('data works --------------------------------------------------------------------------------');
+    fs.readFile('./data.json', 'utf8', async(err, data) => {
+      if (err) {
+        console.error(err);
+        return;
+      }
+      const jsondata = JSON.parse(data);
+      // console.log('jsondata : ', jsondata.products);
+      // console.log(typeof data.json());
+      for ( let i of jsondata.products){
+        console.log(i);
+        await ProductServiceClass.insertProduct(i);
+      }
+    });
+  }
+
 }
 
 module.exports = ProductControllerClass;
