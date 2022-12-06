@@ -25,22 +25,8 @@ class ProductControllerClass {
     try {
       const category = req.params?.category;
       const filt_query = req?.query;
-      if (
-        category === "smartphones" ||
-        category === "laptops" ||
-        category === "fragrances" ||
-        category === "skincare" ||
-        category === "groceries" ||
-        category === "home-decoration"
-      ) {
-        ProductServiceClass.fetchCategory(category,filt_query)
-          .then((respond) => {
-            res.send(respond);
-          })
-          .catch((err) => {
-            console.log("Fetcing Category Error Then Catch: ", err);
-          });
-      } else {
+      console.log('category : ',typeof category);
+      if(category.includes('63')){
         ProductServiceClass.fetchOneProduct(category)
           .then((respond) => {
             res.send(respond);
@@ -49,6 +35,40 @@ class ProductControllerClass {
             console.log("Product One Item Error : ", err);
           });
       }
+      else{
+        ProductServiceClass.fetchCategory(category,filt_query)
+          .then((respond) => {
+            res.send(respond);
+          })
+          .catch((err) => {
+            console.log("Fetcing Category Error Then Catch: ", err);
+          });
+      }
+      // if (
+      //   category === "smartphones" ||
+      //   category === "laptops" ||
+      //   category === "fragrances" ||
+      //   category === "skincare" ||
+      //   category === "groceries" ||
+      //   category === "home-decoration" ||
+      //   category === "furniture"
+      // ) {
+      //   ProductServiceClass.fetchCategory(category,filt_query)
+      //     .then((respond) => {
+      //       res.send(respond);
+      //     })
+      //     .catch((err) => {
+      //       console.log("Fetcing Category Error Then Catch: ", err);
+      //     });
+      // } else {
+      //   ProductServiceClass.fetchOneProduct(category)
+      //     .then((respond) => {
+      //       res.send(respond);
+      //     })
+      //     .catch((err) => {
+      //       console.log("Product One Item Error : ", err);
+      //     });
+      // }
     } catch (err) {
       console.log("Fetcing Category Error : ", err);
     }

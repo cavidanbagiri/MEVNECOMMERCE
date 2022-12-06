@@ -4,9 +4,9 @@ const router = express.Router();
 //Import Product Controller Class
 const ProductControllerClass = require('../controllers/product');
 
-// router.get("/", ProductControllerClass.fetchCatalog);
+router.get("/", ProductControllerClass.fetchCatalog);
 router.get('/:category',ProductControllerClass.fetchCategory);
-router.get('/', ProductControllerClass.insertData);
+//router.get('/', ProductControllerClass.insertData);
 
 
 module.exports = router;
