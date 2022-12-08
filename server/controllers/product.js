@@ -51,11 +51,7 @@ class ProductControllerClass {
   static fetchDataForHome = async (req, res) => {
     ProductServiceClass.fetchDataForHome()
       .then(async (respond) => {
-        await setTimeout(()=>{
-          console.log('time');
-          console.log('res : ',respond);
-        },3000)
-        res.send(respond.data);
+        res.send(respond);
       })
       .catch((err) => {
         res.send("error happen for home page : ", err);
