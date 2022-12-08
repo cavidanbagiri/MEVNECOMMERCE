@@ -28,11 +28,12 @@ class ProductServiceClass {
   };
   //Fetch Data For Home Page Limit=5
   static fetchDataForHome = async () => {
-    let all_categories_products = {};
+    // let all_categories_products = {};
+    let all_categories_products = [];
     await this.getAllCategories().then(async (respond) => {
       for await (let i of respond) {
-        const some = await Product.find({ category: i.category }).limit(1);
-        all_categories_products[`${i.category}`] = [...some];
+        const some = await Product.find({ category: i.category }).limit(2);
+        all_categories_products.push(...some);
       }
     });
     return all_categories_products;
