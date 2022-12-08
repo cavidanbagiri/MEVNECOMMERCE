@@ -5,6 +5,7 @@ const router = express.Router();
 const ProductControllerClass = require('../controllers/product');
 
 router.get("/", ProductControllerClass.fetchCatalog);
+router.get("/home", ProductControllerClass.fetchDataForHome);
 router.get('/:category',ProductControllerClass.fetchCategory);
 //router.get('/', ProductControllerClass.insertData);
 
