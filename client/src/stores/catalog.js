@@ -7,10 +7,12 @@ const categoryStore = defineStore("categoryStore", {
     category: new Set(),
     products: [],
     brands: new Set(),
+    products_for_home_page: [],
   }),
   getters: {
     GETCATEGORY: (state) => state.category,
     GETPRODUCTS: (state) => state.products,
+    GETPRODUCTSFORHOMEPAGE: (state) => state.products_for_home_page,
   },
   actions: {
     //Fetch All Catalog For
@@ -38,6 +40,7 @@ const categoryStore = defineStore("categoryStore", {
           .get(`/api/catalog/${category_name}`)
           .then(async (respond) => {
             this.products = respond.data;
+            console.log('producuts : ',this.products);
             return this.products;
           })
           .catch((err) => {
@@ -45,6 +48,20 @@ const categoryStore = defineStore("categoryStore", {
           });
       } catch (err) {
         console.log("Fetch Category ", err);
+      }
+    },
+    //Fetch Data For Showing Home Page
+    async FETCHDATAFORHOMEPAGE(){
+      try{
+        await axios.get('/api/catalog/home').
+        then(async(respond)=>{
+          this.products_for_home_page = respond.data
+          return this.products_for_home_page;
+        }).catch((err)=>{
+          console.log('Error For Home Page Products and From axios : ',err);
+        })
+      }catch(err){
+        console.log('Error For Home Page : ',err);
       }
     },
     //fetch Filtered IProducts

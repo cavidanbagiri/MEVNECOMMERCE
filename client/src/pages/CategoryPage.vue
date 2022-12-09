@@ -11,7 +11,7 @@
         </div>
         <div class="col-9">
             <div class="row flex justify-content-between">
-                <div class="my-2 mx-1 p-0 border-none" v-for="i in products" :key=i style="width: 15rem;">
+                <div class="p-0 " v-for="i in products" :key=i style="width: 15rem;">
                     <card-item :product="i"></card-item>
                 </div>
             </div>

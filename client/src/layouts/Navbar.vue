@@ -46,16 +46,22 @@
           </router-link>
           <router-link to="/" class="nav-link active text-stone-300 text-md px-1">
             <div class="btn-group dropstart">
-              <button type="button" class="btn " data-bs-toggle="dropdown" aria-expanded="false">
-                <img src="//avatars.mds.yandex.net/get-yapic/0/0-0/islands-retina-50" class=""
-                      style="width:38px" alt="">
+              <button type="button" style="width:35px;height:35px"  class="btn p-0 m-0" title="Title" data-bs-toggle="dropdown" aria-expanded="false">
+                <img src="//avatars.mds.yandex.net/get-yapic/0/0-0/islands-retina-50" class="me-2"
+                      style="width:35px;height:35px" alt="">
               </button>
               <ul class="dropdown-menu px-3" aria-labelledby="dropdownMenuButton1">
                 <li>
                   <router-link to="/" class="dropdown-item  py-2" href="#">
-                    <img src="//avatars.mds.yandex.net/get-yapic/0/0-0/islands-retina-50" class="me-2"
+                    <div class="row">
+                      <div class="col-4">
+                        <img src="//avatars.mds.yandex.net/get-yapic/0/0-0/islands-retina-50" class="me-2"
                       style="width:35px" alt="">
-                    <span class="fw-bold" v-font-size=20>Email</span><br>
+                      </div>
+                      <div class="col-8">
+                        <span class="fw-bold" v-font-size=20>Email</span>
+                      </div>
+                    </div>
                     <span class="">cavidanbagiri@gmail.com</span>
                   </router-link>
                 </li>
