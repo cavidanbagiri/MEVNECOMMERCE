@@ -28,12 +28,16 @@ class ProductServiceClass {
   };
   //Fetch Data For Home Page Limit=5
   static fetchDataForHome = async () => {
-    // let all_categories_products = {};
-    let all_categories_products = [];
+    let all_categories_products = {};
+    // let all_categories_products = [];
     await this.getAllCategories().then(async (respond) => {
       for await (let i of respond) {
-        const some = await Product.find({ category: i.category }).limit(2);
-        all_categories_products.push(...some);
+        const some = await Product.find({ category: i.category }).limit(5);
+        let first_letter = i.category.charAt(0).toUpperCase()+i.category.slice(1);
+        console.log('first ',first_letter);
+        // all_categories_products[`${i.category}`] = [...some];
+        all_categories_products[first_letter] = [...some];
+        // all_categories_products.push(...some);
       }
     });
     return all_categories_products;
